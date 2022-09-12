@@ -9,5 +9,10 @@
   "workspaces": [
     "backend",
     "frontend"
-  ]
+  ],
+  "dependenciesMeta": {
+    "serverless-offline@10.0.2": {
+      "unplugged": true
+    }
+  }
 }

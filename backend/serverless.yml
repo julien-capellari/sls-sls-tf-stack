@@ -1,0 +1,49 @@
+org: jujulego
+app: stack-tests
+service: sls-tf-stack
+frameworkVersion: '3'
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+package:
+  individually: true
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: eu-west-3
+  deploymentMethod: direct
+
+  tracing:
+    lambda: true
+    apiGateway: true
+
+  environment:
+    FRONTEND_URL: http://localhost:3000
+    TODO_TABLE: todo-sls-tf-stack-dev
+
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Scan
+            - dynamodb:GetItem
+          Resource:
+            - arn:aws:dynamodb:eu-west-3:235403126921:table/todo-sls-tf-stack-dev
+
+  tags:
+    Project: sls-tf-stack
+
+  stackTags:
+    Project: sls-tf-stack
+
+functions:
+  todos-api:
+    handler: src/lambda.handler
+    events:
+      - httpApi:
+          method: any
+          path: /{proxy+}
