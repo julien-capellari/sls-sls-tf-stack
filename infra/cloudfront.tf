@@ -81,7 +81,7 @@ resource "aws_cloudfront_distribution" "todos" {
 }
 
 resource "aws_cloudfront_origin_access_control" "todos-react" {
-  name                              = "todos-s3-tf-stack-${var.stage}"
+  name                              = "todos-s3-sls-tf-stack-${var.stage}"
   origin_access_control_origin_type = "s3"
   signing_behavior                  = "always"
   signing_protocol                  = "sigv4"

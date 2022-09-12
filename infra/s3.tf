@@ -20,7 +20,7 @@ data "aws_iam_policy_document" "todos-react-s3-access" {
 }
 
 resource "aws_s3_bucket" "todos-react" {
-  bucket = "todos-react-tf-stack-${var.stage}"
+  bucket = "todos-react-sls-tf-stack-${var.stage}"
 }
 
 resource "aws_s3_bucket_acl" "todos-react" {
