@@ -18,7 +18,6 @@ export class TodosService {
 
   // Methods
   async listAll(): Promise<Todo[]> {
-    console.log(process.env.TODO_TABLE);
     const res = await this.dynamodb.send(new ScanCommand({
       TableName: process.env.TODO_TABLE
     }));

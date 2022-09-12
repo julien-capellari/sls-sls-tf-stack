@@ -1,4 +1,4 @@
-org: jujulego
+org: nxjuliencapellari
 app: stack-tests
 service: sls-tf-stack
 frameworkVersion: '3'
@@ -21,8 +21,14 @@ provider:
     apiGateway: true
 
   environment:
-    FRONTEND_URL: http://localhost:3000
-    TODO_TABLE: todo-sls-tf-stack-dev
+#    FRONTEND_URL: ${ssm:/sls-tf-stack/${sls:stage}/frontend-url}
+    TODO_TABLE: ${ssm:/sls-tf-stack/${sls:stage}/todo-table}
+
+  httpApi:
+    cors:
+      allowedOrigins:
+        - http://localhost:3000
+        - ${ssm:/sls-tf-stack/${sls:stage}/frontend-url}
 
   iam:
     role:

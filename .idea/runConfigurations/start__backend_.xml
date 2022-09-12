@@ -8,6 +8,7 @@
     <node-interpreter value="project" />
     <envs>
       <env name="AWS_PROFILE" value="nx-perso" />
+      <env name="AWS_REGION" value="eu-west-3" />
     </envs>
     <method v="2" />
   </configuration>
