@@ -1,5 +1,5 @@
 org: nxjuliencapellari
-app: stack-tests
+app: sls-tf-stack
 service: sls-tf-stack
 frameworkVersion: '3'
 
