@@ -1,0 +1,30 @@
+terraform {
+  required_version = ">= 1.2.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.16"
+    }
+  }
+
+  cloud {
+    organization = "jujulego"
+
+    workspaces {
+      name = "sls-sls-tf-stack"
+    }
+  }
+}
+
+provider "aws" {
+  region = var.region
+  profile = var.profile
+
+  default_tags {
+    tags = {
+      Project = "sls-sls-tf-stack"
+      Stage   = var.stage
+    }
+  }
+}
